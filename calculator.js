@@ -50,3 +50,6 @@ while (true) {
 } while (true);
 
 let table = "<table border='2'><tr><th>x</th><th>Operator</th><th>y</th><th>Result</th></tr>";
+
+// Display table
+document.body.innerHTML = table;
