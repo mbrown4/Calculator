@@ -2,47 +2,60 @@
 let calcHist = [];
 let valResult = [];
 
-do {
+while (true) {
     // Prompt for the first number
     let xInput = prompt("Value of x");
-    let x = parseFloat(xInput);
-    if (isNaN(x)) {
-        calculationHistory.push({ x: x, operator: "", y: "", result: "wrong input number" });
-        continue;
+
+    // Check if user wants to exit
+    if (xInput === null) {
+        break;
     }
+    let x = parseFloat(xInput);
 
     // Prompt for the second number
     let yInput = prompt("Value of y");
-    let y = parseFloat(yInput);
-    if (isNaN(y)) {
-        calculationHistory.push({ x: x, operator: "", y: y, result: "wrong input number" });
-        continue;
+
+    // Check if user wants to exit
+    if (yInput === null) {
+        break;
     }
+    let y = parseFloat(yInput);
 
     // Prompt for the first number
     let operator = prompt("Operator");
     let result;
 
-    // Perform operator calculation
-    switch(operator){
-        case "+":
-            result = x + y;
-            break;
-        case "-":
-            result = x - y;
-            break;
-        case "*":
-            result = x * y;
-            break;
-        case "/":
-            result = x / y;
-            break;
-        case "%":
-            result = x % y;
-            break;
-        default:
-            alert("Invalid operator.")
-            continue;
+    // Check if user wants to exit
+    if (operator === null) {
+        break;
+    }
+
+    // Check if x and y are numeric
+    if (isNaN(x) || isNaN(y)) {
+        result = "wrong input number";
+        x = xInput;
+        y = yInput;
+    } else {
+        // Perform operator calculation
+        switch(operator){
+            case "+":
+                result = x + y;
+                break;
+            case "-":
+                result = x - y;
+                break;
+            case "*":
+                result = x * y;
+                break;
+            case "/":
+                result = x / y;
+                break;
+            case "%":
+                result = x % y;
+                break;
+            default:
+                result = "compution erorr";
+        }
     }
 
     // Push cacculation details into array
@@ -54,7 +67,7 @@ do {
     }
 
     // Generate table
-    let table = "<table border='2'><tr><th>x</th><th>Operator</th><th>y</th><th>Result</th></tr>";
+    let table = "<h2>Calculation History</h2><table border='2'><tr><th>x</th><th>Operator</th><th>y</th><th>Result</th></tr>";
     calcHist.forEach(function(calculation){
         table += "<tr>";
         table += "<td>" + calculation.x + "</td>";
@@ -84,5 +97,7 @@ do {
     if(!again){
         break;
     }
-} while (true);
+} 
+//while (true);
+
 
