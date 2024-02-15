@@ -34,5 +34,17 @@ while (true) {
         case "%":
             result = x % y;
             break;
+        default:
+            alert("Invalid operator.")
+            continue;
     }
-}
+
+    // Display result
+    alert("Result: " + result);
+
+    // Ask if user wants to perform another calculation
+    let again = confirm("Confirm?");
+    if(!again){
+        break;
+    }
+} while (true);
