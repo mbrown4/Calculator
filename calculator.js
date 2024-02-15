@@ -2,14 +2,16 @@
 let calcHist = [];
 do {
     // Prompt for the first number
-    let x = parseFloat(prompt("Value of x"));
+    let xInput = prompt("Value of x");
+    let x =parseFloat(xInput);
     if (isNaN(x)) {
         alert("Invalid input. Please enter a valid number.");
         continue;
     }
 
     // Prompt for the second number
-    let y = parseFloat(prompt("Value of y"));
+    let yInput = prompt("Value of y");
+    let y = parseFloat(yInput);
     if (isNaN(y)) {
         alert("Invalid input. Please enter a valid number.");
         continue;
@@ -41,15 +43,16 @@ do {
             continue;
     }
 
-    calcHist.push([x, operator, y, result]);
+    calcHist.push([x: x, operator: operator, y: y, result: result]);
 
     // Generate table
     let table = "<table border='2'><tr><th>x</th><th>Operator</th><th>y</th><th>Result</th></tr>";
     calcHist.forEach(function(calculation){
         table += "<tr>";
-        calcHist.forEach(function(value){
-            table += "<td>" + value + "</td>";
-        });
+        table += "<td>" + calculation.x + "</td>";
+        table += "<td>" + calculation.operator + "</td>";
+        table += "<td>" + calculation.y + "</td>";
+        table += "<td>" + calculation.result + "</td>";
         table += "</tr>";
     });
     table += "</table>"
