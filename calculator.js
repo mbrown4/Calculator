@@ -1,4 +1,6 @@
-while (true) {
+
+let calcHist = [];
+do {
     // Prompt for the first number
     let x = parseFloat(prompt("Value of x"));
     if (isNaN(x)) {
@@ -39,8 +41,20 @@ while (true) {
             continue;
     }
 
-    // Display result
-    alert("Result: " + result);
+    calcHist.push([x, operator, y, result]);
+
+    // Generate table
+    let table = "<table border='2'><tr><th>x</th><th>Operator</th><th>y</th><th>Result</th></tr>";
+    calcHist.forEach(function(calculation){
+        table += "<tr>";
+        calcHist.forEach(function(value){
+            table += "<td>" + value + "</td>";
+        });
+        table += "</tr>";
+    });
+    table += "</table>"
+    // Display table
+    document.body.innerHTML = table;
 
     // Ask if user wants to perform another calculation
     let again = confirm("Confirm?");
@@ -49,7 +63,3 @@ while (true) {
     }
 } while (true);
 
-let table = "<table border='2'><tr><th>x</th><th>Operator</th><th>y</th><th>Result</th></tr>";
-
-// Display table
-document.body.innerHTML = table;
